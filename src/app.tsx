@@ -1,11 +1,9 @@
-import { useState, FormEvent } from "react"
+import { useState, FormEvent, ChangeEvent } from "react"
 
 export function App() {
   const [ allTasks, setAllTasks ] = useState<string[] | undefined>([])
   const [ tasksCompleted, setTasksCompleted ] = useState<string[] | undefined>([]);
-
-  localStorage.setItem("tasks", JSON.stringify(allTasks))
-  localStorage.setItem("tasksDone", JSON.stringify(tasksCompleted))
+  // const [ searchResults, setSearchResults ] = useState< string[] | undefined >([])
 
   function addTask(event: FormEvent<HTMLFormElement>) {
     let duplicate = false
@@ -37,6 +35,14 @@ export function App() {
     event.currentTarget.reset()
   }
 
+  function deleteTaskDone(taskDone: string) {
+    const newTaskDoneList = tasksCompleted?.filter((addedTaskDone: string) => {
+      return addedTaskDone !== taskDone
+    })
+
+    setTasksCompleted([...newTaskDoneList])
+  }
+
   function deleteTask(deletedTask: string) {
     const newTasksList = allTasks?.filter((addedTask: string) => {
       return addedTask !== deletedTask;
@@ -59,22 +65,46 @@ export function App() {
     setAllTasks([...newTasksListForDone])
   }
 
+
+  function searchTask(event: ChangeEvent<HTMLInputElement>) {
+    const searchInputValue = event.target.value
+    console.log(searchInputValue)
+  }
+
   return (
     <div className="flex items-center flex-col py-16 gap-16 selection:bg-violet-600">
-      <form onSubmit={addTask}>
-        <div className="flex gap-2">
+      <div className="flex flex-col gap-14">
+        <form className="flex flex-col gap-4" onSubmit={addTask}>
+          <div className="flex gap-2">
+            <input
+              autoComplete="off"
+              name="tasks"
+              className="border-solid border rounded-lg border-purple-950 w-96 outline-none placeholder:text-neutral-500  px-3 placeholder:py-10 text-white bg-purple-1050 h-10" 
+              type="text" 
+              placeholder="Add a new task" 
+            />
+            <button type="submit" className="bg-violet-500 w-10 h-10 flex rounded-lg justify-center items-center">
+              <img src="./src/assets/images/add-icon.svg" alt="Add icon" />
+            </button>
+          </div>
+        </form>
+
+        <div className="flex justify-center gap-2">
           <input
             autoComplete="off"
-            name="tasks"
-            className="border-solid border rounded-lg border-purple-950 w-96 outline-none placeholder:text-neutral-500  px-3 placeholder:py-10 text-white bg-purple-1050 h-10" 
+            name="search-tasks"
+            className="border-solid border rounded-lg border-purple-950 w-[336px]  outline-none placeholder:text-neutral-500 px-3 placeholder:py-10 text-white bg-purple-1050 h-10" 
             type="text" 
-            placeholder="Add a new task" 
+            onChange={searchTask}
+            placeholder="Search" 
           />
+
           <button type="submit" className="bg-violet-500 w-10 h-10 flex rounded-lg justify-center items-center">
-            <img src="./src/assets/images/add-icon.svg" alt="Add icon" />
+            <img src="./src/assets/images/search-icon.svg" className="w-6 h-6" alt="Search icon" />
           </button>
-        </div>
-      </form>
+        </div>  
+      </div>
+      
 
       <div className=" w-[432px] flex flex-col gap-4">
         <span className="text-white">Tasks to do - {allTasks?.length}</span>
@@ -105,8 +135,14 @@ export function App() {
         <span className="text-white">Done - {tasksCompleted?.length}</span>
           {tasksCompleted?.map(isTaskCompleted => {
             return (
-              <div key={isTaskCompleted} className="bg-purple-1000 w-full h-20 rounded-lg flex justify-between items-center p-6">
-                <s className="text-emerald-200 truncate">{isTaskCompleted}</s>
+              <div key={isTaskCompleted} className="flex justify-between items-center">
+                <div className="bg-purple-1000 w-full h-20 rounded-lg flex justify-between items-center p-6">
+                  <s className="text-emerald-200 truncate">{isTaskCompleted}</s>
+
+                  <button onClick={() => deleteTaskDone(isTaskCompleted)}>
+                    <img className=" object-cover" src="./src/assets/images/delete-icon.svg" alt="Delete icon" />
+                  </button>
+                </div>
               </div>
             )
           })}
