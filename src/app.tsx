@@ -3,7 +3,6 @@ import { useState, FormEvent, ChangeEvent } from "react"
 export function App() {
   const [ allTasks, setAllTasks ] = useState<string[] | undefined>([])
   const [ tasksCompleted, setTasksCompleted ] = useState<string[] | undefined>([]);
-  // const [ searchResults, setSearchResults ] = useState< string[] | undefined >([])
 
   function addTask(event: FormEvent<HTMLFormElement>) {
     let duplicate = false
@@ -12,12 +11,8 @@ export function App() {
     const data = new FormData(event.currentTarget)
     const inputValue = data.get("tasks")?.toString()
 
-    if(inputValue === undefined) {
-      return null
-    }
-
-    if(inputValue === '') {
-      return
+    if(inputValue === "" || inputValue === undefined) {
+      return undefined
     }
 
     allTasks?.forEach((tasks: string) => {
@@ -66,14 +61,14 @@ export function App() {
   }
 
 
-  function searchTask(event: ChangeEvent<HTMLInputElement>) {
-    const searchInputValue = event.target.value
-    console.log(searchInputValue)
-  }
+  // function searchTask(event: ChangeEvent<HTMLInputElement>) {
+  //   const searchInputValue = event.target.value
+  //   console.log(searchInputValue)
+  // }
 
   return (
     <div className="flex items-center flex-col py-16 gap-16 selection:bg-violet-600">
-      <div className="flex flex-col gap-14">
+      <div className="flex flex-row gap-2">
         <form className="flex flex-col gap-4" onSubmit={addTask}>
           <div className="flex gap-2">
             <input
@@ -89,7 +84,13 @@ export function App() {
           </div>
         </form>
 
-        <div className="flex justify-center gap-2">
+        <button type="button" onClick={() => ""} className="bg-violet-500 h-10 flex rounded-lg justify-center items-center flex-row w-32 gap-2">
+          <img src="./src/assets/images/search-icon.svg" className="w-6 h-6" alt="Search icon" />
+          <span className="text-white">To search</span>
+        </button>
+
+
+        {/* <div className="flex justify-center gap-2">
           <input
             autoComplete="off"
             name="search-tasks"
@@ -98,11 +99,7 @@ export function App() {
             onChange={searchTask}
             placeholder="Search" 
           />
-
-          <button type="submit" className="bg-violet-500 w-10 h-10 flex rounded-lg justify-center items-center">
-            <img src="./src/assets/images/search-icon.svg" className="w-6 h-6" alt="Search icon" />
-          </button>
-        </div>  
+        </div>   */}
       </div>
       
 
@@ -112,7 +109,7 @@ export function App() {
           allTasks?.map(addedTasks => {
             return(
               <div key={addedTasks} className="bg-purple-1000 w-full h-20 rounded-lg flex justify-between items-center p-6">
-                <span className="text-violet-400 truncate">{addedTasks}</span>
+                <span className="text-violet-400 truncate max-w-72">{addedTasks}</span>
 
                 <div className="flex gap-3">
                   <button onClick={() => completeTask(addedTasks)}>
@@ -137,7 +134,7 @@ export function App() {
             return (
               <div key={isTaskCompleted} className="flex justify-between items-center">
                 <div className="bg-purple-1000 w-full h-20 rounded-lg flex justify-between items-center p-6">
-                  <s className="text-emerald-200 truncate">{isTaskCompleted}</s>
+                  <s className="text-emerald-200 truncate max-w-80">{isTaskCompleted}</s>
 
                   <button onClick={() => deleteTaskDone(isTaskCompleted)}>
                     <img className=" object-cover" src="./src/assets/images/delete-icon.svg" alt="Delete icon" />
