@@ -1,8 +1,17 @@
-import { useState, FormEvent, ChangeEvent } from "react"
+import { useState, FormEvent } from "react"
 
 export function App() {
   const [ allTasks, setAllTasks ] = useState<string[] | undefined>([])
   const [ tasksCompleted, setTasksCompleted ] = useState<string[] | undefined>([]);
+  const [ isModalOpen, setIsModalOpen ] = useState(false)
+
+  function openModal() {
+    setIsModalOpen(true)
+  }
+
+  function closeModal() {
+    setIsModalOpen(false)
+  }
 
   function addTask(event: FormEvent<HTMLFormElement>) {
     let duplicate = false
@@ -78,28 +87,49 @@ export function App() {
               type="text" 
               placeholder="Add a new task" 
             />
+
             <button type="submit" className="bg-violet-500 w-10 h-10 flex rounded-lg justify-center items-center">
               <img src="./src/assets/images/add-icon.svg" alt="Add icon" />
             </button>
           </div>
         </form>
 
-        <button type="button" onClick={() => ""} className="bg-violet-500 h-10 flex rounded-lg justify-center items-center flex-row w-32 gap-2">
-          <img src="./src/assets/images/search-icon.svg" className="w-6 h-6" alt="Search icon" />
+        <button type="button" onClick={openModal} className="bg-violet-500 h-10 flex rounded-lg justify-center items-center flex-row w-32 gap-2">
+          <img src="./src/assets/images/search-icon.svg" className="w-5 h-5" alt="Search icon" />
           <span className="text-white">To search</span>
         </button>
 
+        {isModalOpen && (
+          <div className="absolute bottom-0 left-0 top-0 right-0 flex justify-center items-center bg-black bg-opacity-65">
+            <div className="bg-purple-1050 border border-[#2B2730] w-[615px] h-[490px] rounded-[36px] p-14 flex flex-col gap-8">
+              <div className="flex justify-center gap-5">
+                <section className="flex flex-col gap-8">
+                  <h3 className="text-white font-semibold text-2xl">Search your tasks</h3>
 
-        {/* <div className="flex justify-center gap-2">
-          <input
-            autoComplete="off"
-            name="search-tasks"
-            className="border-solid border rounded-lg border-purple-950 w-[336px]  outline-none placeholder:text-neutral-500 px-3 placeholder:py-10 text-white bg-purple-1050 h-10" 
-            type="text" 
-            onChange={searchTask}
-            placeholder="Search" 
-          />
-        </div>   */}
+                  <input
+                    autoComplete="off"
+                    name="search-tasks"
+                    className="border-solid border rounded-lg border-purple-950 w-[432px] outline-none placeholder:text-neutral-500 px-3 placeholder:py-10 text-white bg-purple-1050 h-10" 
+                    type="text"
+                    placeholder="Search a task" 
+                  />
+                </section>
+
+                <button onClick={closeModal} className="w-5 h-5 -my-2">
+                  <img 
+                    src="./src/assets/images/close-modal.svg" 
+                    alt="Close modal icon" 
+                  />
+                </button>
+              </div>
+
+              <section className="flex-1 flex flex-col gap-8 justify-center items-center">
+                <img src="./src/assets/images/modal-list.svg" alt="to do list image" />
+                <p className="text-neutral-500">Your tasks will appears here</p>
+              </section>
+            </div>
+          </div>
+        )}
       </div>
       
 
