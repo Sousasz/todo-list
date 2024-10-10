@@ -32,6 +32,8 @@ export function App() {
       }
     })
 
+    
+
     if(duplicate) {
       return null
     } else {
@@ -101,8 +103,8 @@ export function App() {
         </button>
 
         {isModalOpen && (
-          <div className="absolute bottom-0 left-0 top-0 right-0 flex justify-center items-center bg-black bg-opacity-65">
-            <div className="bg-purple-1050 border border-[#2B2730] w-[615px] h-[490px] rounded-[36px] p-14 flex flex-col gap-8">
+          <div className="absolute top-0 bottom-0 left-0 right-0 flex justify-center items-center bg-black bg-opacity-65">
+            <div className="bg-purple-1050 border border-[#2B2730] w-[615px] h-[590px] rounded-[36px] p-14 flex flex-col gap-8">
               <form action="#" className="flex justify-center gap-5">
                 <section className="flex flex-col gap-8">
                   <h3 className="text-white font-semibold text-2xl">Search your tasks</h3>
@@ -127,13 +129,13 @@ export function App() {
               
               <section className="flex-1 flex flex-col gap-4 justify-center items-center overflow-y-scroll">
                 {searchResults !== "" && allTasks?.length !== 0 ? (
-                  allTasks?.filter((addedTask, index) => {
-                  return addedTask[index].toLowerCase() === searchResults[index]
-                }).map((results) =>
-                  <div key={results} className="bg-purple-1000 w-full h-20 rounded-lg flex justify-between items-center p-6">
-                    <span className="text-violet-400 truncate max-w-72">{results}</span>
-                  </div>
-                )
+                  allTasks?.filter((addedTask: string) => {
+                    return addedTask.toLowerCase().includes(searchResults.toLowerCase()) 
+                  }).map((results: string) =>
+                    <div key={results} className="bg-purple-1000 w-full h-20 rounded-lg flex justify-between items-center p-6">
+                      <span className="text-violet-400 truncate max-w-72">{results}</span>
+                    </div>
+                  )
                 ) : (
                   <>
                     <img src="./src/assets/images/modal-list.svg" alt="to do list image" />
@@ -150,7 +152,7 @@ export function App() {
       <div className=" w-[432px] flex flex-col gap-4">
         <span className="text-white">Tasks to do - {allTasks?.length}</span>
         {allTasks.length > 0 ? (
-          allTasks?.map((addedTasks) => {
+          allTasks?.map((addedTasks: string) => {
             return(
               <div key={addedTasks} className="bg-purple-1000 w-full h-20 rounded-lg flex justify-between items-center p-6">
                 <span className="text-violet-400 truncate max-w-72">{addedTasks}</span>
