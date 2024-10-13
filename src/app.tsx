@@ -1,14 +1,27 @@
-import { useState, FormEvent, ChangeEvent } from "react"
+import { useState, FormEvent, ChangeEvent, useEffect } from "react"
 import { TaskAddForm } from "./components/TaskAddForm";
 import { SearchModal } from "./components/SearchModal";
 import { TasksToDo } from "./components/TasksToDo";
 import { CompletedTasks } from "./components/completedTasks";
 
 export function App() {
+
   const [ allTasks, setAllTasks ] = useState<string[] | undefined>([])
   const [ tasksCompleted, setTasksCompleted ] = useState<string[] | undefined>([]);
-  const [ searchResults, setSearchResults ] = useState<string>("")
+  const [ searchResults, setSearchResults ] = useState("")
   const [ isModalOpen, setIsModalOpen ] = useState(false)
+
+  useEffect(() => {
+    const tasksToDo = localStorage.getItem("tasks")
+    const convertTaskToDo = JSON.parse(tasksToDo)
+
+
+    if(convertTaskToDo) {
+      setAllTasks(convertTaskToDo)
+    } else {
+      setAllTasks([])
+    }
+  }, [])
 
   function openModal() {
     setIsModalOpen(true)
@@ -27,7 +40,7 @@ export function App() {
     const inputValue = data.get("tasks")?.toString()
 
     if(inputValue === "" || inputValue === undefined) {
-      return undefined
+      return null
     }
 
     allTasks?.forEach((tasks: string) => {
@@ -36,14 +49,17 @@ export function App() {
       }
     })
 
-    
+    if(allTasks === undefined) {
+      return null
+    }
 
-    if(duplicate) {
+    if(duplicate) { 
       return null
     } else {
       setAllTasks([...allTasks, inputValue])
     }
-    
+
+    localStorage.setItem("tasks", JSON.stringify([...allTasks, inputValue]))  
     event.currentTarget.reset()
   }
 
@@ -52,13 +68,22 @@ export function App() {
       return addedTaskDone !== taskDone
     })
 
+    if(newTaskDoneList === undefined) {
+      return null
+    }
+
     setTasksCompleted([...newTaskDoneList])
+
   }
 
   function deleteTask(deletedTask: string) {
     const newTasksList = allTasks?.filter((addedTask: string) => {
       return addedTask !== deletedTask;
     })
+
+    if(newTasksList === undefined) {
+      return null
+    }
 
     setAllTasks([...newTasksList])
   } 
@@ -70,9 +95,19 @@ export function App() {
 
     allTasks?.forEach((taskDone) => {
       if(taskDone === taskInList) {
+        if(tasksCompleted === undefined) {
+          return null
+        }
+
         setTasksCompleted([...tasksCompleted, taskDone])
       }
     })
+
+    
+
+    if(newTasksListForDone === undefined) {
+      return null
+    }
 
     setAllTasks([...newTasksListForDone])
   }
@@ -105,7 +140,6 @@ export function App() {
         )}
       </div>
       
-
       <TasksToDo 
         allTasks={allTasks}
         completeTask={completeTask}

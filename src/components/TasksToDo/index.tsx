@@ -5,10 +5,17 @@ interface TasksToDoProps {
 }
 
 export function TasksToDo({ allTasks, completeTask, deleteTask }: TasksToDoProps) {
+
+  if(allTasks === undefined) {
+    return null
+  }
+
+  console.log(typeof allTasks)
+
   return (
     <div className=" w-[432px] flex flex-col gap-4">
         <span className="text-white">Tasks to do - {allTasks?.length}</span>
-        {allTasks.length > 0 ? (
+        {allTasks.length > 0 ?  (
           allTasks?.map((addedTasks: string) => {
             return(
               <div key={addedTasks} className="bg-purple-1000 w-full h-20 rounded-lg flex justify-between items-center p-6">

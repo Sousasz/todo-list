@@ -1,7 +1,7 @@
 import { FormEvent } from "react"
 
 interface TaskAddFormProps {
-  addTask: (event: FormEvent<HTMLFormElement>) => void
+  addTask: (event: FormEvent<HTMLFormElement>) => void,
 }
 
 export function TaskAddForm({ addTask }: TaskAddFormProps) {
