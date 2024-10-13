@@ -2,7 +2,7 @@ import { useState, FormEvent, ChangeEvent, useEffect } from "react"
 import { TaskAddForm } from "./components/TaskAddForm";
 import { SearchModal } from "./components/SearchModal";
 import { TasksToDo } from "./components/TasksToDo";
-import { CompletedTasks } from "./components/completedTasks";
+import { CompletedTasks } from "./components/CompletedTasks";
 
 export function App() {
 
