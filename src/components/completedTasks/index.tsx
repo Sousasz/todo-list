@@ -5,12 +5,12 @@ interface completedTasksProps {
 
 export function CompletedTasks({ tasksCompleted, deleteTaskDone }: completedTasksProps) {
   return (
-    <div className=" w-[432px] flex flex-col gap-4">
-        <span className="text-white">Done - {tasksCompleted?.length}</span>
-          {tasksCompleted?.map((isTaskCompleted, index) => {
+    <div className="w-[432px] flex flex-col items-center gap-4 py-4">
+        <span className="text-white text-center sm:text-start">Done - {tasksCompleted?.length}</span>
+          {tasksCompleted?.map((isTaskCompleted: string, index) => {
             return (
-              <div key={isTaskCompleted[index]} className="flex justify-between items-center">
-                <div className="bg-purple-1000 h-20 w-full rounded-lg flex justify-between items-center p-6">
+              <div key={isTaskCompleted[index]} className="flex justify-between w-full max-[470px]:w-[85%] items-center">
+                <div className="bg-purple-1000 w-full h-20 rounded-lg flex justify-between items-center p-6">
                   <s className="text-emerald-200 truncate max-w-80">{isTaskCompleted}</s>
 
                   <div className="flex flex-row-reverse gap-4">

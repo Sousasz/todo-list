@@ -13,24 +13,24 @@ export function TasksToDo({ allTasks, completeTask, deleteTask }: TasksToDoProps
   console.log(typeof allTasks)
 
   return (
-    <div className=" w-[432px] flex flex-col gap-4">
-        <span className="text-white">Tasks to do - {allTasks?.length}</span>
+    <div className="w-[432px] flex flex-col items-center gap-4">
+        <span className="text-white text-center sm:text-start">Tasks to do - {allTasks?.length}</span>
         {allTasks.length > 0 ?  (
           allTasks?.map((addedTasks: string) => {
             return(
-              <div key={addedTasks} className="bg-purple-1000 w-full h-20 rounded-lg flex justify-between items-center p-6">
-                <span className="text-violet-400 truncate max-w-72">{addedTasks}</span>
+                <div key={addedTasks} className="bg-purple-1000 w-full max-[470px]:w-[85%] h-20 rounded-lg flex justify-between items-center p-6 mx-2">
+                  <span className="text-violet-400 truncate max-w-72">{addedTasks}</span>
 
-                <div className="flex gap-3">
-                  <button onClick={() => completeTask(addedTasks)}>
-                    <img className="object-cover" src="./src/assets/images/complete-icon.svg" alt="Complete icon" />
-                  </button>
+                  <div className="flex gap-3">
+                    <button onClick={() => completeTask(addedTasks)}>
+                      <img className="object-cover" src="./src/assets/images/complete-icon.svg" alt="Complete icon" />
+                    </button>
 
-                  <button onClick={() => deleteTask(addedTasks)}>
-                    <img className=" object-cover" src="./src/assets/images/delete-icon.svg" alt="Delete icon" />
-                  </button>
+                    <button onClick={() => deleteTask(addedTasks)}>
+                      <img className=" object-cover" src="./src/assets/images/delete-icon.svg" alt="Delete icon" />
+                    </button>
+                  </div>
                 </div>
-              </div>
             )
           })
         ) : (

@@ -1,4 +1,4 @@
-import { useState, FormEvent, ChangeEvent, useEffect } from "react"
+import { useState, FormEvent, ChangeEvent } from "react"
 import { TaskAddForm } from "./components/TaskAddForm";
 import { SearchModal } from "./components/SearchModal";
 import { TasksToDo } from "./components/TasksToDo";
@@ -10,18 +10,6 @@ export function App() {
   const [ tasksCompleted, setTasksCompleted ] = useState<string[] | undefined>([]);
   const [ searchResults, setSearchResults ] = useState("")
   const [ isModalOpen, setIsModalOpen ] = useState(false)
-
-  useEffect(() => {
-    const tasksToDo = localStorage.getItem("tasks")
-    const convertTaskToDo = JSON.parse(tasksToDo)
-
-
-    if(convertTaskToDo) {
-      setAllTasks(convertTaskToDo)
-    } else {
-      setAllTasks([])
-    }
-  }, [])
 
   function openModal() {
     setIsModalOpen(true)
@@ -59,7 +47,6 @@ export function App() {
       setAllTasks([...allTasks, inputValue])
     }
 
-    localStorage.setItem("tasks", JSON.stringify([...allTasks, inputValue]))  
     event.currentTarget.reset()
   }
 
@@ -120,15 +107,11 @@ export function App() {
   return (
     <div className="flex items-center flex-col py-16 gap-16 selection:bg-violet-600">
       <img src="./src/assets/images/Logo.svg" alt="Logo" />
-      <div className="flex flex-row gap-2">
+      <div className="flex gap-2 flex-col ">
         <TaskAddForm 
           addTask={addTask}
+          openModal={openModal}
         />
-
-        <button type="button" onClick={openModal} className="bg-violet-500 h-10 flex rounded-lg justify-center items-center flex-row w-32 gap-2">
-          <img src="./src/assets/images/search-icon.svg" className="w-5 h-5" alt="Search icon" />
-          <span className="text-white">To search</span>
-        </button>
 
         {isModalOpen && (
           <SearchModal
