@@ -10,22 +10,22 @@ interface SearchModalProps {
 export function SearchModal({ searchTask, closeModal, searchResults, allTasks }: SearchModalProps) {
   return (  
     <div className="absolute top-0 bottom-0 left-0 right-0 flex justify-center items-center bg-black bg-opacity-65">
-      <div className="bg-purple-1050 border border-[#2B2730] w-[615px] h-[590px] rounded-[36px] p-14 flex flex-col gap-8">
+      <div className="bg-purple-1050 border border-[#2B2730] sm:text-center max-[680px]:w-[90dvw] w-[615px] h-[85dvh] rounded-[36px] p-14 max-[500px]:px-7 flex flex-col gap-8">
         <form action="#" className="flex justify-center gap-5">
-          <section className="flex flex-col gap-8">
-            <h3 className="text-white font-semibold text-2xl">Search your tasks</h3>
+          <section className="flex flex-col  gap-8">
+            <h3 className="text-white font-semibold text-2xl max-[420px]:text-xl">Search your tasks</h3>
 
             <input
               onChange={searchTask}
               autoComplete="off"
               name="search-tasks"
-              className="border-solid border rounded-lg border-purple-950 w-[432px] outline-none placeholder:text-neutral-500 px-3 placeholder:py-10 text-white bg-purple-1050 h-10" 
+              className="border-solid border rounded-lg border-purple-950 w-[432px] max-[680px]:w-[65dvw] outline-none placeholder:text-neutral-500 px-3 placeholder:py-10 text-white bg-purple-1050 h-10" 
               type="text"
               placeholder="Search a task" 
             />
           </section>
 
-          <button onClick={closeModal} className="w-5 h-5 -my-2">
+          <button onClick={closeModal} className="w-4 h-4">
             <img 
               src="./src/assets/images/close-modal.svg" 
               alt="Close modal icon" 
@@ -44,8 +44,12 @@ export function SearchModal({ searchTask, closeModal, searchResults, allTasks }:
             )
           ) : (
             <>
-              <img src="./src/assets/images/modal-list.svg" alt="to do list image" />
-              <p className="text-neutral-500">Your tasks will appear here</p>
+              <img 
+                src="./src/assets/images/modal-list.svg" 
+                alt="to do list image"
+                className="max-[500px]:w-32" 
+              />
+              <p className="text-neutral-500 text-center max-[500px]:text-sm">Your tasks will appear here</p>
             </>
           )}
         </section>

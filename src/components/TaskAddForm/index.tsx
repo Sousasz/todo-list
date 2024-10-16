@@ -12,7 +12,7 @@ export function TaskAddForm({ addTask, openModal }: TaskAddFormProps) {
         <input
           autoComplete="off"
           name="tasks"
-          className="border-solid border rounded-lg border-purple-950 w-96 outline-none placeholder:text-neutral-500  px-3 placeholder:py-10 text-white bg-purple-1050 h-10" 
+          className="border-solid border rounded-lg border-purple-950 w-96 outline-none placeholder:text-neutral-500 max-[445px]:w-[85dvw]  px-3 placeholder:py-10 text-white bg-purple-1050 h-10" 
           type="text" 
           placeholder="Add a new task" 
         />

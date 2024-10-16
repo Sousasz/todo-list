@@ -13,12 +13,13 @@ export function TasksToDo({ allTasks, completeTask, deleteTask }: TasksToDoProps
   console.log(typeof allTasks)
 
   return (
-    <div className="w-[432px] flex flex-col items-center gap-4">
+    <div className="w-[432px] flex flex-col gap-4 py-4">
         <span className="text-white text-center sm:text-start">Tasks to do - {allTasks?.length}</span>
-        {allTasks.length > 0 ?  (
-          allTasks?.map((addedTasks: string) => {
-            return(
-                <div key={addedTasks} className="bg-purple-1000 w-full max-[470px]:w-[85%] h-20 rounded-lg flex justify-between items-center p-6 mx-2">
+        <div className="flex flex-col items-center gap-4">
+          {allTasks.length > 0 ?  (
+            allTasks?.map((addedTasks: string) => {
+              return(
+                <div key={addedTasks} className="bg-purple-1000 w-full max-[470px]:w-[85dvw] h-20 rounded-lg flex justify-between items-center p-6 mx-2">
                   <span className="text-violet-400 truncate max-w-72">{addedTasks}</span>
 
                   <div className="flex gap-3">
@@ -31,11 +32,12 @@ export function TasksToDo({ allTasks, completeTask, deleteTask }: TasksToDoProps
                     </button>
                   </div>
                 </div>
-            )
-          })
-        ) : (
-          null
-        )}
+              )
+            })
+          ) : (
+            null
+          )}
+        </div>
       </div>
   )
 }
