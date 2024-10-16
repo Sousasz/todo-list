@@ -7,7 +7,7 @@ interface SearchModalProps {
   allTasks: string[] | undefined
 }
 
-export function SearchModal({ searchTask, closeModal, searchResults, allTasks }: SearchModalProps) {
+export default function SearchModal({ searchTask, closeModal, searchResults, allTasks }: SearchModalProps) {
   return (  
     <div className="absolute top-0 bottom-0 left-0 right-0 flex justify-center items-center bg-black bg-opacity-65">
       <div className="bg-purple-1050 border border-[#2B2730] sm:text-center max-[680px]:w-[90dvw] w-[615px] h-[85dvh] rounded-[36px] p-14 max-[500px]:px-7 flex flex-col gap-8">

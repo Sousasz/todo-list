@@ -5,7 +5,7 @@ interface TaskAddFormProps {
   openModal: () => void
 }
 
-export function TaskAddForm({ addTask, openModal }: TaskAddFormProps) {
+export default function TaskAddForm({ addTask, openModal }: TaskAddFormProps) {
   return(
     <form className="flex flex-col gap-4" onSubmit={addTask}>
       <div className="flex gap-2 flex-col sm:flex-row items-center">

@@ -4,7 +4,7 @@ interface TasksToDoProps {
   deleteTask: (addedTask: string) => void
 }
 
-export function TasksToDo({ allTasks, completeTask, deleteTask }: TasksToDoProps) {
+export default function TasksToDo({ allTasks, completeTask, deleteTask }: TasksToDoProps) {
 
   if(allTasks === undefined) {
     return null

@@ -3,7 +3,7 @@ interface completedTasksProps {
   deleteTaskDone: (isTaskCompleted: string) => void
 }
 
-export function CompletedTasks({ tasksCompleted, deleteTaskDone }: completedTasksProps) {
+export default function CompletedTasks({ tasksCompleted, deleteTaskDone }: completedTasksProps) {
   return (
     <div className="w-[432px] flex flex-col gap-4 py-4">
         <span className="text-white text-center sm:text-start">Done - {tasksCompleted?.length}</span>

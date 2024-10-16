@@ -1,10 +1,10 @@
 import { useState, FormEvent, ChangeEvent } from "react"
-import { TaskAddForm } from "./components/TaskAddForm";
-import { SearchModal } from "./components/SearchModal";
-import { TasksToDo } from "./components/TasksToDo";
-import { CompletedTasks } from "./components/CompletedTasks";
+import TaskAddForm from "./components/TaskAddForm";
+import SearchModal from "./components/SearchModal";
+import TasksToDo from "./components/TasksToDo";
+import CompletedTasks from "./components/CompletedTasks";
 
-export function App() {
+export default function App() {
 
   const [ allTasks, setAllTasks ] = useState<string[] | undefined>([])
   const [ tasksCompleted, setTasksCompleted ] = useState<string[] | undefined>([]);
