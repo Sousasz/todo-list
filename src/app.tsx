@@ -2,7 +2,7 @@ import { useState, FormEvent, ChangeEvent } from "react"
 import TaskAddForm from "./components/TaskAddForm";
 import SearchModal from "./components/SearchModal";
 import TasksToDo from "./components/TasksToDo";
-import CompletedTasks from "./components/CompletedTasks";
+import CompletedTasks from "./components/completedTasks";
 
 export default function App() {
 
