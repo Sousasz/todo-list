@@ -1,4 +1,6 @@
 import { ChangeEvent } from "react"
+import CloseModalIcon from "../Icons/CloseModalIcon"
+import ModalListImage from "../Icons/ModalListImage"
 
 interface SearchModalProps {
   searchTask: (event: ChangeEvent<HTMLInputElement>) => void,
@@ -26,10 +28,7 @@ export default function SearchModal({ searchTask, closeModal, searchResults, all
           </section>
 
           <button onClick={closeModal} className="w-4 h-4">
-            <img 
-              src="./src/assets/images/close-modal.svg" 
-              alt="Close modal icon" 
-            />
+            <CloseModalIcon />
           </button>
         </form>
         
@@ -44,11 +43,7 @@ export default function SearchModal({ searchTask, closeModal, searchResults, all
             )
           ) : (
             <>
-              <img 
-                src="./src/assets/images/modal-list.svg" 
-                alt="to do list image"
-                className="max-[500px]:w-32" 
-              />
+              <ModalListImage />
               <p className="text-neutral-500 text-center max-[500px]:text-sm">Your tasks will appear here</p>
             </>
           )}

@@ -1,3 +1,5 @@
+import DeleteIcon from "../Icons/DeleteIcon"
+
 interface CompletedTasksProps {
   tasksCompleted: string[] | undefined,
   deleteTaskDone: (isTaskCompleted: string) => void
@@ -15,7 +17,7 @@ export default function CompletedTasks({ tasksCompleted, deleteTaskDone }: Compl
 
                   <div className="flex flex-row-reverse gap-4">
                     <button onClick={() => deleteTaskDone(isTaskCompleted)}>
-                      <img className=" object-cover" src="./src/assets/images/delete-icon.svg" alt="Delete icon" />
+                      <DeleteIcon />
                     </button>
                   </div>
                 </div>

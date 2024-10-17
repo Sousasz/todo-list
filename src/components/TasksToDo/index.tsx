@@ -1,3 +1,6 @@
+import CompleteIcon from "../Icons/CompleteIcon"
+import DeleteIcon from "../Icons/DeleteIcon"
+
 interface TasksToDoProps {
   allTasks: string[] | undefined,
   completeTask: (addedTask: string) => void,
@@ -24,11 +27,11 @@ export default function TasksToDo({ allTasks, completeTask, deleteTask }: TasksT
 
                   <div className="flex gap-3">
                     <button onClick={() => completeTask(addedTasks)}>
-                      <img className="object-cover" src="./src/assets/images/complete-icon.svg" alt="Complete icon" />
+                      <CompleteIcon />
                     </button>
 
                     <button onClick={() => deleteTask(addedTasks)}>
-                      <img className=" object-cover" src="./src/assets/images/delete-icon.svg" alt="Delete icon" />
+                      <DeleteIcon />
                     </button>
                   </div>
                 </div>

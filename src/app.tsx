@@ -3,6 +3,7 @@ import TaskAddForm from "./components/TaskAddForm";
 import SearchModal from "./components/SearchModal";
 import TasksToDo from "./components/TasksToDo";
 import CompletedTasks from "./components/completedTasks";
+import Logo from "./components/Icons/Logo";
 
 export default function App() {
 
@@ -106,7 +107,7 @@ export default function App() {
 
   return (
     <div className="flex items-center flex-col py-16 gap-16 selection:bg-violet-600">
-      <img src="./src/assets/images/Logo.svg" alt="Logo" />
+      <Logo />
       <div className="flex gap-2 flex-col ">
         <TaskAddForm 
           addTask={addTask}

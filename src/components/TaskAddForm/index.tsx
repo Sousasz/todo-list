@@ -1,4 +1,6 @@
 import { FormEvent } from "react"
+import AddIcon from "../Icons/AddIcon"
+import SearchIcon from "../Icons/SearchIcon"
 
 interface TaskAddFormProps {
   addTask: (event: FormEvent<HTMLFormElement>) => void,
@@ -17,15 +19,15 @@ export default function TaskAddForm({ addTask, openModal }: TaskAddFormProps) {
           placeholder="Add a new task" 
         />
 
-        <div className="flex flex-row gap-2">
+        <div className="flex flex-rowq gap-2">
           <button type="submit" className="bg-violet-500 w-10 h-10 flex rounded-lg justify-center items-center">
-            <img src="./src/assets/images/add-icon.svg" alt="Add icon" />
+            <AddIcon />
           </button>
 
           <button type="button" onClick={openModal} className="bg-violet-500 h-10 flex rounded-lg justify-center items-center flex-row w-32 gap-2">
-            <img src="./src/assets/images/search-icon.svg" className="w-5 h-5" alt="Search icon" />
+            <SearchIcon />
             <span className="text-white">To search</span>
-          </button>
+          </button> 
         </div>
       </div>
     </form> 
