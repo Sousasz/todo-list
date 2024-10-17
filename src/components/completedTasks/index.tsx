@@ -15,7 +15,7 @@ export default function CompletedTasks({ tasksCompleted, deleteTaskDone }: Compl
 
                   <div className="flex flex-row-reverse gap-4">
                     <button onClick={() => deleteTaskDone(isTaskCompleted)}>
-                      <img className=" object-cover" src="./src/assets/images/delete-icon.svg" alt="Delete icon" />
+                      <img className=" object-cover" src="./public/images/delete-icon.svg" alt="Delete icon" />
                     </button>
                   </div>
                 </div>

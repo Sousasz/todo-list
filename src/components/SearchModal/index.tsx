@@ -27,7 +27,7 @@ export default function SearchModal({ searchTask, closeModal, searchResults, all
 
           <button onClick={closeModal} className="w-4 h-4">
             <img 
-              src="./src/assets/images/close-modal.svg" 
+              src="./public/images/close-modal.svg" 
               alt="Close modal icon" 
             />
           </button>
@@ -45,7 +45,7 @@ export default function SearchModal({ searchTask, closeModal, searchResults, all
           ) : (
             <>
               <img 
-                src="./src/assets/images/modal-list.svg" 
+                src="./public/images/modal-list.svg" 
                 alt="to do list image"
                 className="max-[500px]:w-32" 
               />

@@ -24,11 +24,11 @@ export default function TasksToDo({ allTasks, completeTask, deleteTask }: TasksT
 
                   <div className="flex gap-3">
                     <button onClick={() => completeTask(addedTasks)}>
-                      <img className="object-cover" src="./src/assets/images/complete-icon.svg" alt="Complete icon" />
+                      <img className="object-cover" src="./public/images/complete-icon.svg" alt="Complete icon" />
                     </button>
 
                     <button onClick={() => deleteTask(addedTasks)}>
-                      <img className=" object-cover" src="./src/assets/images/delete-icon.svg" alt="Delete icon" />
+                      <img className=" object-cover" src="./public/images/delete-icon.svg" alt="Delete icon" />
                     </button>
                   </div>
                 </div>
