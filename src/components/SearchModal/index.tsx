@@ -1,6 +1,6 @@
 import { ChangeEvent } from "react"
-import CloseModalIcon from "../Icons/CloseModalIcon"
-import ModalListImage from "../Icons/ModalListImage"
+import { X } from "lucide-react"
+
 
 interface SearchModalProps {
   searchTask: (event: ChangeEvent<HTMLInputElement>) => void,
@@ -28,7 +28,7 @@ export default function SearchModal({ searchTask, closeModal, searchResults, all
           </section>
 
           <button onClick={closeModal} className="w-4 h-4">
-            <CloseModalIcon />
+            <X className="text-white" />
           </button>
         </form>
         
@@ -43,7 +43,7 @@ export default function SearchModal({ searchTask, closeModal, searchResults, all
             )
           ) : (
             <>
-              <ModalListImage />
+              <img src="./public/images/modal-list.png" alt="Task list image" />
               <p className="text-neutral-500 text-center max-[500px]:text-sm">Your tasks will appear here</p>
             </>
           )}

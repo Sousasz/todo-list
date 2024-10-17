@@ -1,4 +1,4 @@
-import DeleteIcon from "../Icons/DeleteIcon"
+import { Trash } from "lucide-react"
 
 interface CompletedTasksProps {
   tasksCompleted: string[] | undefined,
@@ -17,7 +17,7 @@ export default function CompletedTasks({ tasksCompleted, deleteTaskDone }: Compl
 
                   <div className="flex flex-row-reverse gap-4">
                     <button onClick={() => deleteTaskDone(isTaskCompleted)}>
-                      <DeleteIcon />
+                      <Trash className="object-cover text-violet-500" />
                     </button>
                   </div>
                 </div>
