@@ -43,7 +43,6 @@ export default function SearchModal({ searchTask, closeModal, searchResults, all
             )
           ) : (
             <>
-              <img src="./public/images/modal-list.png" alt="Task list image" />
               <p className="text-neutral-500 text-center max-[500px]:text-sm">Your tasks will appear here</p>
             </>
           )}

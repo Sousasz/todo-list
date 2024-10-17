@@ -106,7 +106,6 @@ export default function App() {
 
   return (
     <div className="flex items-center flex-col py-16 gap-16 selection:bg-violet-600">
-      <img src="./public/images/Logo.png" alt="Task.ly logo" />
       <div className="flex gap-2 flex-col ">
         <TaskAddForm 
           addTask={addTask}
