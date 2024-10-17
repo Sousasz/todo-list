@@ -32,7 +32,7 @@ export default function SearchModal({ searchTask, closeModal, searchResults, all
           </button>
         </form>
         
-        <section className="flex-1 flex flex-col gap-4 justify-center items-center overflow-y-scroll">
+        <section className="flex-1 flex flex-col gap-4 justify-center items-center overflow-x-hidden">
           {searchResults !== "" && allTasks?.length !== 0 ? (
             allTasks?.filter((addedTask: string) => {
               return addedTask.toLowerCase().includes(searchResults.toLowerCase()) 
