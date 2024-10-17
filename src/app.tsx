@@ -107,11 +107,7 @@ export default function App() {
 
   return (
     <div className="flex items-center flex-col py-16 gap-16 selection:bg-violet-600">
-<<<<<<< HEAD
       <Logo />
-=======
-      <img src="./public/images/Logo.svg" alt="Logo" />
->>>>>>> ce37f378da817fe40ac313d83e57587b8e5aacf7
       <div className="flex gap-2 flex-col ">
         <TaskAddForm 
           addTask={addTask}

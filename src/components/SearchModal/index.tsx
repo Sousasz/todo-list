@@ -28,14 +28,7 @@ export default function SearchModal({ searchTask, closeModal, searchResults, all
           </section>
 
           <button onClick={closeModal} className="w-4 h-4">
-<<<<<<< HEAD
             <CloseModalIcon />
-=======
-            <img 
-              src="./public/images/close-modal.svg" 
-              alt="Close modal icon" 
-            />
->>>>>>> ce37f378da817fe40ac313d83e57587b8e5aacf7
           </button>
         </form>
         
@@ -50,15 +43,7 @@ export default function SearchModal({ searchTask, closeModal, searchResults, all
             )
           ) : (
             <>
-<<<<<<< HEAD
               <ModalListImage />
-=======
-              <img 
-                src="./public/images/modal-list.svg" 
-                alt="to do list image"
-                className="max-[500px]:w-32" 
-              />
->>>>>>> ce37f378da817fe40ac313d83e57587b8e5aacf7
               <p className="text-neutral-500 text-center max-[500px]:text-sm">Your tasks will appear here</p>
             </>
           )}
